@@ -1,0 +1,279 @@
+.EntryPage {
+
+    width: 100vw;
+    height: 100vh;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: var(--dark-brown);
+
+}
+
+.entry-center-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--nav-text-color);
+}
+
+.entry-container-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--orange);
+    padding-top: 36px;
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-bottom: 20px;
+    border-radius: 12px;
+    max-width: 80vw;
+    box-shadow: 2px 2px 8px var(--dark-brown);
+    padding-top: 36px;
+
+    transition-property: height;
+    transition-duration: .5s;
+    transition-timing-function: ease-out;
+
+    overflow: hidden;
+
+}
+
+.entry-container-grid.create-account.alert-message-on {
+    height: 418px !important;
+}
+
+.entry-container-grid.login.alert-message-on {
+    height: 338px !important;
+
+}
+
+.entry-container-grid.login {
+    height: 278px;
+}
+
+.entry-container-grid.create-account {
+    height: 328px;
+    /* padding-top: 10px; */
+}
+
+.created-by-footer {
+    color: var(--white);
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    display: flex;
+    align-content: center;
+}
+
+.login-container-header {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    height: fit-content;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.login-form {
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 30px; */
+}
+
+.login-main-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 1em;
+    justify-content: center;
+    transition: margin-top .5s ease-out;
+}
+
+.login-main-header.create-account {
+    /* margin-top: 1em; */
+}
+
+
+.alert-message {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    max-width: 180px;
+    height: 70px;    
+    /* line-height: 40px; */
+    margin-bottom: 18px;
+    /* opacity: 0; */
+    transition: box-shadow 0.5s ease;
+    transition: background-color 0.5s ease;
+    border-radius: 12px;
+
+}
+
+.alert-message.mounting {
+    box-shadow: 2px var(--light);
+    background-color: var(--light);
+}
+
+.login-header {
+    text-align: center;
+    max-width: 180px;
+}
+
+.entry-center-container input {
+    border: none;
+    outline: none;
+    background-color: var(--silver-pink) !important;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 8px;
+    height: 1.5rem;
+}
+.entry-center-container input:hover {
+    box-shadow: 2px 2px 1px var(--dark-brown);
+}
+
+
+.entry-center-container label {
+    padding-bottom: .5rem;
+}
+
+.go-back-button-container {
+    height: 0;
+    width: 0;
+    position: relative;
+}
+
+.go-back-button {
+    float: left;
+    position: relative;
+    top: -30px;
+    left: -120px;
+}
+
+.google-icon {
+    width: 1rem;
+    height: auto;
+    padding-right: .5rem;
+}
+
+.EntryPage button {
+    background-color: var(--silver-pink);
+    color: var(--nav-text-color);
+    border-radius: 1rem;
+    /* padding: .25rem; */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    outline: none;
+    height: 1.5rem;
+
+}
+
+.EntryPage button:hover {
+    box-shadow: 2px 2px 1px var(--dark-brown);
+
+}
+
+button:hover {
+    filter: brightness(.8);
+}
+
+
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  /* border: 1px solid var(--nav-text-color); */
+  -webkit-text-fill-color: var(--nav-text-color);
+  -webkit-box-shadow: 0 0 0px 1000px var(--silver-pink) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+.je-icon {
+    height: 1.2rem;
+    width: auto;
+    margin-left: .5rem;
+}
+
+.je-icon:hover {
+    opacity: .8;
+}
+
+.je-icon-text {
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: normal;
+    align-self: center;
+    text-align: center;
+}
+
+.footer-link {
+    color: var(--white);
+    padding-left: .4rem;
+}
+
+.footer-link:hover {
+    opacity: .8;
+}
+
+#name-input-label {
+    margin-inline-start: 0;
+}
+
+#intro-text-container {
+    position: relative;
+    height: 0;
+}
+
+#intro-text {
+    position: relative;
+    /* padding-bottom: 50px; */
+    /* font-size: 2em; */
+    color: var(--light);
+    text-shadow: 2px 2px var(--dark-brown);
+    /* width: 60vw; */
+    text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+    #intro-text {
+        top: -160px;
+
+        font-size: 1.3rem;
+        width: 80vw;
+    }
+}
+
+@media only screen and (min-width: 751px) {
+    #intro-text {
+        top: -220px;
+        font-size: 2rem;
+        width: 60vw;
+    }
+}
