@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from "react"
 
-import bgImg from "../../media/coffee-and-map.jpg"
-// import googleImg from "../../media/GoogleIcon.svg"
 import ghIcon from "../../media/GitHubIconLight.png"
 
 import "../../styles/EntryPage.css"
@@ -14,16 +12,19 @@ const EntryPage = (  ) => {
 
     const [createAccountOpen, setCreateAccountOpen] = useState(false)
     const [introText, setIntroText] = useState('');
+    const [stopAnimation, setStopAnimation] = useState(false)
 
     let fullIntroText = 'Hello, my name is Remi. I can help you schedule text remiders and create checklists. Login or create an account and we can get started!';
     let introTextPlaceholder = '';
     let i = 0;
-    const animateNextLetter = () => {
+    const animateNextLetter = (pauseBool) => {
         if(i<=fullIntroText.length) {
             setIntroText(introTextPlaceholder)
             setTimeout(() => {
-                introTextPlaceholder = `${introTextPlaceholder}${fullIntroText[i++]}`
-                animateNextLetter();
+                if(!pauseBool) introTextPlaceholder = `${introTextPlaceholder}${fullIntroText[i++]}`
+                else pauseBool = false;
+                if(fullIntroText[i] === '.') pauseBool = true;
+                if(!stopAnimation) animateNextLetter();
             }, 100)
         }
     }
@@ -50,15 +51,14 @@ const EntryPage = (  ) => {
     }
 
     useEffect(() => {
-        console.log(introText)
-    }, [introText])
-
-    useEffect(() => {
         animateNextLetter();
+        return () => {
+            setStopAnimation(true)
+        }
     }, [])
 
     return (
-        <div className='EntryPage' style={{ backgroundImage: `url(${bgImg})` }}>
+        <div className='EntryPage' >
 
             <div className='entry-center-container'>
                 <div id='intro-text-container'>

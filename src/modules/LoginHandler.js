@@ -34,7 +34,7 @@ const LoginHandler = (() => {
 
     }
 
-    const createUser = async (email, username, password) => {
+    const createUser = async (email, phone_number, username, password, time_zone) => {
         const options = {
             url: `${apiUrl}/sign-up`,
             method: 'POST',
@@ -44,8 +44,10 @@ const LoginHandler = (() => {
             },
             data: {
                 'email': email,
+                'phone_number': phone_number,
                 'username': username,
-                'password': password
+                'password': password,
+                'time_zone': time_zone
             }
         }
 
@@ -57,8 +59,6 @@ const LoginHandler = (() => {
         }
 
         return res.data;
- 
-
     }
 
     const logoutUser = () => {

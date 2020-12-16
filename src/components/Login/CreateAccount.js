@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import LoginHandler from "../../modules/LoginHandler.js"
+import TimeZoneHandler from "../../modules/TimeZoneHandler.js"
 
 const CreateAccount = (props) => {
 
@@ -9,8 +10,11 @@ const CreateAccount = (props) => {
 
     const [ username, setUsername ] = useState('')
     const [ email, setEmail ] = useState('')
+    const [ phoneNum, setPhoneNum ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ passVerify, setPassVerify ] = useState('')
+    const [ time_zone, setTimeZone] = useState('UTC')
+
 
     const [ alertMessage, setAlertMessage ] = useState('')
 
@@ -49,6 +53,12 @@ const CreateAccount = (props) => {
             case('password-verify-input'):
                 setPassVerify(e.target.value)
                 break;
+            case('phone-input'):
+                setPhoneNum(e.target.value)
+                break;
+            case('time-zone-input'):
+                setTimeZone(e.target.options[e.target.selectedIndex].text)
+
         }
     }
 
@@ -62,12 +72,10 @@ const CreateAccount = (props) => {
         } else if (!passRequirements(password)) {
             setAlert('Password must have at least one uppercase, one lowercase, and one number.')
         }else {
-            const res = await LoginHandler.createUser(email, username, password)
+            const res = await LoginHandler.createUser(email, phoneNum, username, password, time_zone)
             if(res.type !== 'VALID') {
                 setAlert(res.message)
             } else {
-                const container = document.querySelector('.entry-container-grid')
-                container.classList.remove('alert-message-on') 
                 setAlert('')  
             }
         }
@@ -75,28 +83,52 @@ const CreateAccount = (props) => {
 
     const setAlert = (str) => {
         setAlertMessage(str);
-        const container = document.querySelector('.entry-container-grid')
-        container.classList.add('alert-message-on')
+        const container = document.querySelector('.entry-container-grid')        
+        if(container) container.classList.add('alert-message-on')
         setAlertMessage(str);
-        // const alertMessageDom = document.querySelector('.alert-message')
-        // alertMessageDom.classList.add('mounting')
-        // setTimeout(() => {
-        //     alertMessageDom.classList.remove('mounting')
-        // }, 2000)
+        const alertMessageDom = document.querySelector('.alert-message')
+        if(alertMessageDom) {
+            alertMessageDom.classList.add('mounting')
+            setTimeout(() => {
+                alertMessageDom.classList.remove('mounting')
+            }, 2000)
+        }
     }
+
+        const importTimeZones = async () => {
+        const timeZoneSelector = document.getElementById('time-zone-input')
+        let timezones = await TimeZoneHandler.getTimeZones()
+        timezones.forEach(tz => {
+            const op = document.createElement('option')
+            op.value = tz
+            op.textContent = tz
+            timeZoneSelector.appendChild(op)
+        })
+
+    }
+
+    useEffect(() => {
+        importTimeZones()
+    }, [])
 
     return(
         <div>
             {(alertMessage == '')?null:<div className='alert-message'>{alertMessage}</div>}
             <form onSubmit={onCreateAccount} className='login-form create-account-form'>
-                <label id='name-input-label' htmlFor='name-input'>Username</label>
-                <input onChange={updateValue} id='name-input' name='Display Name' type='text' autoComplete='username' required={true}></input>
+                <label id='name-input-label' htmlFor='name-input'>Name</label>
+                <input className='login-input' onChange={updateValue} id='name-input' name='Display Name' type='text' autoComplete='username' required={true}></input>
                 <label htmlFor='email-input'>Email</label>
-                <input onChange={updateValue} id='email-input' name='Email' type='email' autoComplete='email' required={true}></input>
+                <input className='login-input' onChange={updateValue} id='email-input' name='Email' type='email' autoComplete='email' required={true}></input>
+                <label htmlFor='phone-input'>Phone Number</label>
+                <input className='login-input' onChange={updateValue} id='phone-input' name='Phone Number' type='tel' autoComplete='tel' required={true}></input>
+                <label htmlFor='time-zone-input'> Time Zone </label>
+                <select className='login-input' onChange={updateValue} name='Time Zone' id='time-zone-input'>
+                    <option value='UTC'> --select timezone-- </option>
+                </select>
                 <label htmlFor='password-input'>Password</label>
-                <input onChange={updateValue} id='password-input' name='Password' type='password' autoComplete='password' required={true}></input>
+                <input className='login-input' onChange={updateValue} id='password-input' name='Password' type='password' autoComplete='password' required={true}></input>
                 <label htmlFor='password-verify-input'>Verify Password </label>
-                <input onChange={updateValue} id='password-verify-input' name='Password Verification' type='password' autoComplete='off' required={true}></input>
+                <input className='login-input' onChange={updateValue} id='password-verify-input' name='Password Verification' type='password' autoComplete='off' required={true}></input>
                 <button type='submit'>Submit</button>
             </form>
         </div>

@@ -53,9 +53,9 @@ const Login = (props) => {
             {(alertMessage == '')?null:<div className='alert-message'>{alertMessage}</div>}
             <form onSubmit={onLogin} className='login-form' >
                 <label htmlFor='email-input'>Email</label>
-                <input onChange={updateValue} id='email-input' name='Email' type='email' autoComplete='email' required={true} ></input>
+                <input className='login-input' onChange={updateValue} id='email-input' name='Email' type='email' autoComplete='email' required={true} ></input>
                 <label htmlFor='password-input'>Password</label>
-                <input onChange={updateValue} id='password-input' name='Password' type='password' autoComplete='password' required={true} ></input>
+                <input className='login-input' onChange={updateValue} id='password-input' name='Password' type='password' autoComplete='password' required={true} ></input>
                 <button type='submit'>Login</button>
             </form>
         </div>

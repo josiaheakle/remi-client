@@ -7,13 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: var(--dark-brown);
 }
 
-
 :root {
+
   --dark-gray: rgb(37, 37, 37);
   --white: white;
   --gray: grey;

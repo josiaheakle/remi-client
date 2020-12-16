@@ -3,11 +3,7 @@
     width: 100vw;
     height: 100vh;
 
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: var(--dark-brown);
+
 
 }
 
@@ -44,7 +40,7 @@
 }
 
 .entry-container-grid.create-account.alert-message-on {
-    height: 418px !important;
+    height: 518px !important;
 }
 
 .entry-container-grid.login.alert-message-on {
@@ -57,7 +53,7 @@
 }
 
 .entry-container-grid.create-account {
-    height: 328px;
+    height: 428px;
     /* padding-top: 10px; */
 }
 
@@ -114,7 +110,7 @@
     text-align: center;
     align-content: center;
     justify-content: center;
-    max-width: 180px;
+    max-width: 204px;
     height: 70px;    
     /* line-height: 40px; */
     margin-bottom: 18px;
@@ -135,19 +131,37 @@
     max-width: 180px;
 }
 
-.entry-center-container input {
+.login-input {
     border: none;
     outline: none;
+    width: 200px;
     background-color: var(--silver-pink) !important;
     text-align: center;
     border-radius: 1rem;
     margin-bottom: 8px;
     height: 1.5rem;
 }
-.entry-center-container input:hover {
+.login-input:hover {
     box-shadow: 2px 2px 1px var(--dark-brown);
 }
 
+#time-zone-input {
+    text-align: center;
+    text-align-last: center;
+  
+}
+
+/* #time-zone-input {
+    width: 200px;
+
+    border: none;
+    outline: none;
+    background-color: var(--silver-pink) !important;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 8px;
+    height: 1.5rem;   
+} */
 
 .entry-center-container label {
     padding-bottom: .5rem;
