@@ -1,0 +1,59 @@
+.AccountSidebar {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    width: 0;
+    height: 0;
+    position: relative;
+    left: 0px;
+    transition: left ease-out .5s;
+
+}
+
+.AccountSidebar.open {
+    left: -400px;
+}
+
+.account-sidebar-icon {
+    min-width: 80px;
+    width: 80px;
+    height: 80px;
+
+    background-color: var(--orange);
+
+    position: relative;
+    left: -80px;
+
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.account-sidebar-icon:hover {
+    box-shadow: -2px 2px 2px var(--dark-brown);
+    filter: brightness(110%);
+    /* opacity: .9; */
+}
+
+.account-sidebar-icon:hover + .account-sidebar-container{
+    filter: brightness(110%);
+}
+
+.account-sidebar-icon img {
+    height: 70px;
+    width: 70px;
+}
+
+.account-sidebar-container {
+    background-color: var(--orange);
+    position: relative;
+    left: -80px;
+    height: 80vh;
+    width: 400px;
+    min-width: 400px;
+    border-bottom-left-radius: 20px;
+}

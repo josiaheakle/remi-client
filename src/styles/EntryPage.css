@@ -3,7 +3,8 @@
     width: 100vw;
     height: 100vh;
 
-
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
 
 }
 
@@ -40,20 +41,20 @@
 }
 
 .entry-container-grid.create-account.alert-message-on {
-    height: 518px !important;
+    height: 580px !important;
 }
 
 .entry-container-grid.login.alert-message-on {
-    height: 338px !important;
+    height: 400px !important;
 
 }
 
 .entry-container-grid.login {
-    height: 278px;
+    height: 310px;
 }
 
 .entry-container-grid.create-account {
-    height: 428px;
+    height: 490px;
     /* padding-top: 10px; */
 }
 
@@ -145,6 +146,11 @@
     box-shadow: 2px 2px 1px var(--dark-brown);
 }
 
+.login-input:focus {
+    box-shadow: 2px 2px 1px var(--dark-brown);
+
+}
+
 #time-zone-input {
     text-align: center;
     text-align-last: center;
@@ -173,18 +179,12 @@
     position: relative;
 }
 
-.go-back-button {
-    float: left;
-    position: relative;
-    top: -30px;
-    left: -120px;
-}
 
-.google-icon {
+/* .google-icon {
     width: 1rem;
     height: auto;
     padding-right: .5rem;
-}
+} */
 
 .EntryPage button {
     background-color: var(--silver-pink);
@@ -196,7 +196,25 @@
     border: none;
     outline: none;
     height: 1.5rem;
+    
+}
 
+.go-back-button {
+    float: left;
+    position: relative;
+    width: 2.5em;
+    height: 2em !important;
+    top: -30px;
+    left: -130px;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#go-back-image {
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .EntryPage button:hover {
@@ -269,10 +287,11 @@ select:-webkit-autofill:focus {
     position: relative;
     /* padding-bottom: 50px; */
     /* font-size: 2em; */
-    color: var(--light);
+    color: var(--white);
     text-shadow: 2px 2px var(--dark-brown);
     /* width: 60vw; */
     text-align: center;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 750px) {

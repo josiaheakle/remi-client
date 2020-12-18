@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 
 import ghIcon from "../../media/GitHubIconLight.png"
+import backIcon from "../../media/back.png"
 
 import "../../styles/EntryPage.css"
 
@@ -70,7 +71,9 @@ const EntryPage = (  ) => {
                 <div className={`entry-container-grid ${(!createAccountOpen) ? 'login' : 'create-account'}`}>
                     {(createAccountOpen)?
                         <div className='go-back-button-container'>
-                            <button onClick={closeCreateAccount} type='button' className='go-back-button'><i className='material-icons'>arrow_back</i></button>
+                            {/* <button onClick={closeCreateAccount} type='button' className='go-back-button'><i className='material-icons'>arrow_back</i></button> */}
+                            <button onClick={closeCreateAccount} type='button' className='go-back-button'><img id='go-back-image' src={backIcon}></img></button>
+
                         </div>
                     :null}
                     <div className='login-container-header'>

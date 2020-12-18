@@ -61,6 +61,27 @@ const LoginHandler = (() => {
         return res.data;
     }
 
+    const updateUserVerificationInfo = async () => {
+        const options = {
+            url: `${apiUrl}/verify/info/${_currentUser._id}`,
+            method: 'get',
+            headers: {
+              'Accept': 'application/json',
+            }
+        }
+
+        const res = await axios(options)
+
+        console.log(`updateuserverification - loginhandler, res: `,res)
+
+        if(res.status === 200) {
+            _currentUser.email_verified = res.data.email_verified
+            _currentUser.phone_number_verified = res.data.phone_number_verified
+            _onUserUpdate()
+        }
+
+    }
+
     const logoutUser = () => {
         _currentUser = undefined;
         _onUserUpdate();
@@ -79,12 +100,15 @@ const LoginHandler = (() => {
         return _currentUser;
     }
 
+    
+
     return {
         createUser: createUser,
         loginUser: loginUser,
         logoutUser: logoutUser,
         getCurrentUser: getCurrentUser,
-        setUserUpdateCallback: setUserUpdateCallback
+        setUserUpdateCallback: setUserUpdateCallback,
+        updateUserVerificationInfo: updateUserVerificationInfo
     }
 
 

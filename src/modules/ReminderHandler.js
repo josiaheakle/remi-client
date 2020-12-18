@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Login from "../components/Login/Login.js";
 import LoginHandler from "./LoginHandler.js"
+import Scheduler from "./Scheduler.js"
 
 const axios = require('axios')
 require('dotenv').config();
@@ -27,7 +28,7 @@ const ReminderHandler = (() => {
         _callback = callback
     }
 
-    const _updateReminders = () => {
+    const updateReminders = () => {
         _callback()
     }
 
@@ -57,12 +58,18 @@ const ReminderHandler = (() => {
 
         
         const res = await axios(options)
-        _updateReminders()
+        updateReminders()
         return res
     }
 
-    const deleteReminder = () => {
-
+    const deleteReminder = async (id) => {
+        const options = {
+            url: `${apiUrl}/reminder/delete/${id}`,
+            method: 'GET'
+        }
+        const res = await axios(options)
+        updateReminders()
+        return res.data
     }
 
     const editReminder = async (id, reminderObj) => {
@@ -79,6 +86,7 @@ const ReminderHandler = (() => {
             data: {            
                 'title': reminderObj.title,
                 'start_date': reminderObj.start_date,
+                'next_date': reminderObj.next_date,
                 'freq': reminderObj.freq,
                 'text': reminderObj.text,
                 'time_zone': currentUser.time_zone,
@@ -87,7 +95,7 @@ const ReminderHandler = (() => {
         }
 
         const res = await axios(options)
-        _updateReminders()
+        updateReminders()
         return res
     }
 
@@ -97,9 +105,12 @@ const ReminderHandler = (() => {
 
         const options = {
             url: `${apiUrl}/reminder/all/${currentUser._id}`,
-            method: 'GET',
+            method: 'GET'
         }
         const res = await axios(options)
+
+        Scheduler.scheduleAllUpdates(res.data)
+
         return res.data
         
 
@@ -108,7 +119,9 @@ const ReminderHandler = (() => {
     return {
         createReminder: createReminder,
         editReminder: editReminder,
+        deleteReminder: deleteReminder,
         getAllReminders: getAllReminders,
+        updateReminders: updateReminders,
         setUpdateReminderCallback: setUpdateReminderCallback,
     }
 

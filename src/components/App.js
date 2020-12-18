@@ -69,11 +69,11 @@ const App = () => {
               <EntryPage />
             </Route>
             <Route path="/home">
-              <HomePage user={user} />
+              <HomePage user={user} reminders={reminders} />
             </Route>
-            <Route path="/reminders">
+            {/* <Route path="/reminders">
               <ReminderHub reminders={reminders} />
-            </Route>
+            </Route> */}
 
           </Switch>
       </Router>
