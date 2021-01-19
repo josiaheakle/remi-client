@@ -11,7 +11,6 @@ import AccountHub from './AccountHub.js'
 
 import reminderIcon from "../media/reminders.png"
 import accountIcon from "../media/user_transparent.png"
-import ghIcon from "../media/GitHubIconLight.png"
 
 
 const HomePage = (props) => {
@@ -146,15 +145,6 @@ const HomePage = (props) => {
                 
 
             </div>
-
-            <span className='created-by-footer'>Created by
-                <a className='footer-link' href="https://josiaheakle.com" title="Josiah Eakle Portfolio">
-                    Josiah Eakle
-                </a>
-                <a href="https://github.com/josiaheakle/reminder-client" title="Github">
-                    <img className='je-icon' src={ghIcon} alt='GitHub Icon' />
-                </a>
-            </span>
 
         </div>
     );

@@ -1,8 +1,8 @@
 .HomePage {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
-    overflow: hidden;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: row;
@@ -40,11 +40,41 @@
     text-align: center;
 }
 
+@media only screen and (max-width: 750px) {
+    .remi-text-container {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .page-selector {
+
+        position: absolute;
+        padding-top: 1em;
+    
+        display: flex;
+        flex-direction: row;
+    
+    }
+}
+
+@media only screen and (min-width: 751px) {
+    .remi-text-container {
+        top: -220px;
+        font-size: 2rem;
+        width: 60vw;
+    }
+
+    .page-selector {
+
+        top: 1em;
+        right: 1em;
+    
+    }
+}
+
 .page-selector {
 
     position: absolute;
-    top: 1em;
-    right: 1em;
 
     display: flex;
     flex-direction: row;

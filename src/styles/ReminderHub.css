@@ -1,18 +1,23 @@
 .ReminderHub {
-    height: auto;
+    /* height: auto; */
     width: 100%;
-    overflow: hidden;
+    max-width: 90vw;
+    overflow-x: hidden;
 
     margin-top: 2em;
 
     display: flex;
     flex-direction: row;
 
-    padding: 2em;
+    padding: 1em;
+
+    margin-bottom: 4em;
 
     border-radius: 20px;
     background-color: var(--orange);
     box-shadow: 2px 2px 1px var(--dark-brown);
+
+    z-index: 1;
 
 }
 
@@ -20,10 +25,7 @@ textarea {
     font-family: 'Andika New Basic', sans-serif;
 }
 
-.all-user-reminders {
-    width: 50%;
-    border-right: 1px solid black;
-}
+
 
 .all-user-reminders-header {
     text-align: center;
@@ -34,9 +36,6 @@ textarea {
     font-size: 2em;
 }
 
-.NewReminderForm {
-    width: 50%;
-}
 
 .new-reminder-form {
 
@@ -159,8 +158,8 @@ textarea {
     text-shadow: 2px 2px var(--dark-brown);
     font-size: 2em;
 
-    margin-right: 2em;
-    margin-left: 2em;
+    /* margin-right: 2em;
+    margin-left: 2em; */
 }
 
 .new-reminder-icon-button {
@@ -185,7 +184,6 @@ textarea {
 .ActiveReminder {
     background-color: var(--light);
     padding: 1rem;
-    margin-right: 2rem;
     /* border: 1px solid black; */
     border-radius: 12px;
     display: flex;
@@ -319,4 +317,40 @@ textarea {
 
 .login-button {
     margin-top: 1em;
+}
+
+@media only screen and (max-width: 860px) {
+    .ReminderHub {
+        flex-direction: column;
+    }
+
+    .NewReminderForm {
+        width: 100%;
+    }
+
+    .all-user-reminders {
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+
+    
+}
+
+@media only screen and (min-width: 861px) {
+
+
+    .NewReminderForm {
+        width: 50%;
+    }
+
+    .all-user-reminders {
+        width: 50%;
+        border-right: 1px solid black;
+    }
+
+    .ActiveReminder {
+        margin-right: 2rem;
+
+    }
+
 }

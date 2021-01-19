@@ -53,6 +53,11 @@ const VerificationHub = (props) => {
         }
     }
 
+    const cancelVerification = () => {
+        setVerifyingEmail(false)
+        setVerifyingText(false)
+    }
+
     const updateCode = (e) => {
         setVerificationCode(e.target.value)
     }
@@ -84,6 +89,8 @@ const VerificationHub = (props) => {
             {(verifyingText) ?
                 <div className='verify-modal-background'>
                     <div className='verify-modal text'>
+                    <button className='modal-button' onClick={cancelVerification}>X</button>
+
                         <form id='text-verification-form' className='verification-form' onSubmit={checkVerification}>
                             <span className='verification-header' > Verifying Phone Number </span>
                             <label className='verification-label' htmlFor='verification-code'>Please enter your four digit verification code. </label>
@@ -96,6 +103,8 @@ const VerificationHub = (props) => {
             {(verifyingEmail) ?
                 <div className='verify-modal-background'>
                     <div className='verify-modal email'>
+                    <button className='modal-button' onClick={cancelVerification}>X</button>
+
                         <form id='email-verification-form' className='verification-form' onSubmit={checkVerification}>
                             <span className='verification-header' > Verifying Email </span>
                             <label className='verification-label' htmlFor='verification-code'>Please enter your four digit verification code. </label>

@@ -199,6 +199,8 @@ const AccountHub = (props) => {
             {(isDeleteModalOpen === true)? 
                 <div className='verify-modal-background'>
                     <div className='verify-modal'>
+                    <button className='modal-button' onClick={noDelete}>X</button>
+
                         <div className='verify-delete-modal-header'> To delete your account, enter your password.  </div>
 
                         <form onSubmit={yesDelete}>
@@ -215,6 +217,9 @@ const AccountHub = (props) => {
             {(isPassModalOpen === true)?
                 <div className='verify-modal-background'>
                     <div className='verify-modal'>
+
+                        <button className='modal-button' onClick={noChangePass}>X</button>
+
                         <div className='verify-delete-modal-header change-pass-header'> To change your password, enter your old password.  </div>
 
                         <div className='verify-delete-modal-button-container'>
@@ -402,6 +407,8 @@ const AccountHub = (props) => {
             <button onClick={deleteUser} className='new-reminder-input button account-button' id='delete-account-button' > Delete Account </button>
 
             {/* <button onClick={LoginHandler.logoutUser} className='new-reminder-input button' id='logout-button' > Logout </button> */}
+
+                
 
         </div>
     )

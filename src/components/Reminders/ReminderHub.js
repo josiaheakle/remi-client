@@ -7,6 +7,9 @@ import ActiveReminder from "./ActiveReminder.js"
 import '../../styles/ReminderHub.css'
 import ReminderHandler from "../../modules/ReminderHandler.js";
 
+import ghIcon from "../../media/GitHubIconLight.png"
+
+
 const ReminderHub = (props) => {
 
     // props - user, reminders
@@ -68,6 +71,7 @@ const ReminderHub = (props) => {
             {(verifyDelete === true)? 
             <div className='verify-modal-background'>
                 <div className='verify-modal'>
+                <button className='modal-button' onClick={noDelete}>X</button>
                     <div className='verify-delete-modal-header'> Are you sure you want to delete this reminder? </div>
 
                     <div className='verify-delete-modal-button-container'>
@@ -88,6 +92,16 @@ const ReminderHub = (props) => {
             </div>
 
             {(reminderToUpdate !== undefined) ? <NewReminderForm reminder={reminderToUpdate} refresh={editClicked} submitted={reminderDoneEditing} cancelEdit={verifyDelete} /> : <NewReminderForm />}
+
+            <span className='created-by-footer'>Created by
+                <a className='footer-link' href="https://josiaheakle.com" title="Josiah Eakle Portfolio">
+                    Josiah Eakle
+                </a>
+                <a href="https://github.com/josiaheakle/reminder-client" title="Github">
+                    <img className='je-icon' src={ghIcon} alt='GitHub Icon' />
+                </a>
+            </span>
+
 
         </div>
     );

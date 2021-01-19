@@ -60,11 +60,12 @@
 
 .created-by-footer {
     color: var(--white);
-    position: absolute;
+    position: fixed;
     left: 1rem;
     bottom: 1rem;
     display: flex;
     align-content: center;
+    z-index: 0;
 }
 
 .login-container-header {
