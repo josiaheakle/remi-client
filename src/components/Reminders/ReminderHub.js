@@ -66,8 +66,8 @@ const ReminderHub = (props) => {
         <div className='ReminderHub'>
 
             {(verifyDelete === true)? 
-            <div className='verify-delete-modal-background'>
-                <div className='verify-delete-modal'>
+            <div className='verify-modal-background'>
+                <div className='verify-modal'>
                     <div className='verify-delete-modal-header'> Are you sure you want to delete this reminder? </div>
 
                     <div className='verify-delete-modal-button-container'>

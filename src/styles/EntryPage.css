@@ -50,7 +50,7 @@
 }
 
 .entry-container-grid.login {
-    height: 310px;
+    height: 320px;
 }
 
 .entry-container-grid.create-account {
@@ -133,23 +133,9 @@
 }
 
 .login-input {
-    border: none;
-    outline: none;
     width: 200px;
-    background-color: var(--silver-pink) !important;
-    text-align: center;
-    border-radius: 1rem;
-    margin-bottom: 8px;
-    height: 1.5rem;
-}
-.login-input:hover {
-    box-shadow: 2px 2px 1px var(--dark-brown);
 }
 
-.login-input:focus {
-    box-shadow: 2px 2px 1px var(--dark-brown);
-
-}
 
 #time-zone-input {
     text-align: center;
@@ -157,7 +143,7 @@
   
 }
 
-/* #time-zone-input {
+#time-zone-input {
     width: 200px;
 
     border: none;
@@ -167,7 +153,7 @@
     border-radius: 1rem;
     margin-bottom: 8px;
     height: 1.5rem;   
-} */
+}
 
 .entry-center-container label {
     padding-bottom: .5rem;
@@ -187,14 +173,10 @@
 } */
 
 .EntryPage button {
-    background-color: var(--silver-pink);
-    color: var(--nav-text-color);
-    border-radius: 1rem;
-    /* padding: .25rem; */
+    
+    padding: .25rem; 
     padding-left: 1rem;
     padding-right: 1rem;
-    border: none;
-    outline: none;
     height: 1.5rem;
     
 }
@@ -217,14 +199,14 @@
     width: 1.5em;
 }
 
-.EntryPage button:hover {
+/* .EntryPage button:hover {
     box-shadow: 2px 2px 1px var(--dark-brown);
 
 }
 
 button:hover {
     filter: brightness(.8);
-}
+} */
 
 
 
@@ -240,7 +222,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   /* border: 1px solid var(--nav-text-color); */
   -webkit-text-fill-color: var(--nav-text-color);
-  -webkit-box-shadow: 0 0 0px 1000px var(--silver-pink) inset;
+  /* -webkit-box-shadow: 0 0 0px 1000px var(--silver-pink) inset; */
   transition: background-color 5000s ease-in-out 0s;
 }
 

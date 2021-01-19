@@ -52,7 +52,8 @@ const ReminderHandler = (() => {
                 'freq': reminderObj.freq,
                 'text': reminderObj.text,
                 'time_zone': currentUser.time_zone,
-                'user': currentUser._id
+                'user': currentUser._id,
+                'type': reminderObj.type
             }
         }
 
@@ -90,7 +91,8 @@ const ReminderHandler = (() => {
                 'freq': reminderObj.freq,
                 'text': reminderObj.text,
                 'time_zone': currentUser.time_zone,
-                'user': currentUser._id
+                'user': currentUser._id,
+                'type': reminderObj.type
             }
         }
 

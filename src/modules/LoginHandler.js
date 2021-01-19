@@ -11,7 +11,7 @@ const LoginHandler = (() => {
     const loginUser = async (email, password) => {
 
         const options = {
-            url: `${apiUrl}/login`,
+            url: `${apiUrl}/user/login`,
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -24,19 +24,19 @@ const LoginHandler = (() => {
         }
 
         const res = await axios(options)
+        console.log(res)
 
         if(res.data.user) {
             _currentUser = res.data.user
             _onUserUpdate()
         }
-
-        return res.data
+        return res.data.message
 
     }
 
     const createUser = async (email, phone_number, username, password, time_zone) => {
         const options = {
-            url: `${apiUrl}/sign-up`,
+            url: `${apiUrl}/user/new`,
             method: 'POST',
             headers: {
               'Accept': 'application/json',
@@ -58,7 +58,73 @@ const LoginHandler = (() => {
             _onUserUpdate();
         }
 
-        return res.data;
+        return res.data.message;
+    }
+
+    const updateUserInfo = async (field, value) => {
+
+        console.log(`update user info (${field}, ${value})`)
+
+        const options = {
+            url: `${apiUrl}/user/update`,
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: {
+                'field': field,
+                'value': value,
+                'user': _currentUser._id
+            }
+        }
+
+        try {
+
+            const res = await axios(options) 
+            console.log(res)
+            if(res.data.type === 'SUCCESS') {
+                if(field === 'email') {
+                    _currentUser.email_verified = false
+                } else if (field === 'phone_number') {
+                    _currentUser.phone_number_verified = false
+                }
+                _currentUser[field] = value
+                _onUserUpdate()
+            } else {
+                throw {
+                    type: res.data.type,
+                    message: res.data.message
+                }
+            }
+            return res.data.message
+
+        } catch (err) {
+            return err
+        }
+
+
+    }
+
+    const updateUserPassword = async (oldPass, newPass) => {
+        const options = {
+            url: `${apiUrl}/user/update`,
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: {
+                'field': 'password',
+                'value': newPass,
+                'user': _currentUser._id,
+                'password': oldPass
+            }
+        }
+
+        const res = await axios(options) 
+        return res.data.message
+
     }
 
     const updateUserVerificationInfo = async () => {
@@ -80,6 +146,37 @@ const LoginHandler = (() => {
             _onUserUpdate()
         }
 
+        return res.data.message
+
+    }
+
+    const deleteUser = async (password) => {
+
+        let userId = _currentUser._id
+
+        const options = {
+            url: `${apiUrl}/user/delete`,
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: {
+                user: userId,
+                password: password
+            }
+        }
+
+        const res = await axios(options)
+        console.log('Delete user responce: ')
+        console.log(res)
+
+        if(res.data.success === true) {
+            _currentUser = undefined;
+            _onUserUpdate()
+        }
+
+        return res.data.message
     }
 
     const logoutUser = () => {
@@ -105,10 +202,13 @@ const LoginHandler = (() => {
     return {
         createUser: createUser,
         loginUser: loginUser,
+        deleteUser: deleteUser,
         logoutUser: logoutUser,
+        updateUserInfo: updateUserInfo,
         getCurrentUser: getCurrentUser,
         setUserUpdateCallback: setUserUpdateCallback,
-        updateUserVerificationInfo: updateUserVerificationInfo
+        updateUserVerificationInfo: updateUserVerificationInfo,
+        updateUserPassword: updateUserPassword
     }
 
 

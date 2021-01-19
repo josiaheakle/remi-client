@@ -31,8 +31,8 @@ const ActiveReminder = (props) => {
                 <span className='active-reminder-title'> 
                     {props.reminder.title}
                 </span>
-                <button onClick={deleteReminder} className='active-reminder-icon-button'> <img className='active-reminder-icon' src={clearIcon}/> </button>
-                <button onClick={editReminder} className='active-reminder-icon-button'> <img className='active-reminder-icon' src={editIcon}/> </button>
+                <button onClick={deleteReminder} className='active-reminder-icon-button icon-button'> <img className='active-reminder-icon' src={clearIcon}/> </button>
+                <button onClick={editReminder} className='active-reminder-icon-button icon-button'> <img className='active-reminder-icon' src={editIcon}/> </button>
             </div>
             <span className='active-reminder-next-date'>
                 {`Next Reminder:  ${getDateString(props.reminder.next_date)}`}

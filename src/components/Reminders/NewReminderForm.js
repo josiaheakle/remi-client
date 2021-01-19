@@ -89,7 +89,7 @@ const NewReminderForm = (props) => {
 
         const title = props.reminder.title || ''
         const text = props.reminder.text || ''
-        const date = props.reminder.start_date || ''
+        const date = props.reminder.next_date || ''
         const freq = props.reminder.freq || 'Once'
         const type = props.reminder.type || 'Text'
 
@@ -145,7 +145,7 @@ const NewReminderForm = (props) => {
                 <div className='new-reminder-form-header'> 
                     <span className='form-header-text'> Editing Reminder </span>
                     <div className='new-reminder-button-container'>
-                        <button onClick={cancelEdit} className='new-reminder-icon-button' > 
+                        <button onClick={cancelEdit} className='new-reminder-icon-button icon-button' > 
                             <img className='new-reminder-icon' src={cancelIcon} /> 
                         </button>
                     </div>

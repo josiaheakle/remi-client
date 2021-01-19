@@ -7,7 +7,7 @@ require('dotenv').config();
 const VerificationHandler = (() => {
 
     let _textID = undefined
-    let _emailID = undefined
+    // let _emailID = undefined
 
     const checkTextVerification = async (code) => {
 
@@ -23,27 +23,40 @@ const VerificationHandler = (() => {
             data: {
                 id: _textID,
                 userId: userId,
-                code: code
+                code: code,
+                verificationType: "text"
             }
         }
 
-        try {
-            const res = await axios(options)
-            // console.log(`(VERIFICATION HANDLER checkVerificationText) axios res:`)
-            // console.log(res)
-            if(res.status !== 200) {
-                throw 'Status code not 200'
-            } 
-            else {
-                LoginHandler.updateUserVerificationInfo()
-                return true
-            }
-        } catch (err) {
-            console.log(err)
-            return false
-        }
+        const res = await axios(options)
+        LoginHandler.updateUserVerificationInfo()
+        return res.data;
 
     }
+
+    const checkEmailVerification = async (code) => {
+
+        const userId = LoginHandler.getCurrentUser()._id
+
+        const options = {
+            url: `${process.env.REACT_APP_API_URL}/verify/code`,
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: {
+                id: false,
+                userId: userId,
+                code: code,
+                verificationType: "email"
+            }
+        }
+        const res = await axios(options)
+        LoginHandler.updateUserVerificationInfo()
+        return res.data;
+    }
+
 
     const sendVerificationText = async (phoneNum) => {
         // Calls backend text verification
@@ -71,24 +84,40 @@ const VerificationHandler = (() => {
 
     }
 
-    const sendVerificationEmail = (email) => {
+    const sendVerificationEmail = async (userID) => {
+        const options = {
+            url: `${process.env.REACT_APP_API_URL}/verify/email/${userID}`,
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }
 
+        try {
+            const res = await axios(options)
+            if(res.status !== 200) throw 'Error validating phone number'
+            // else _textID = res.data
+            else console.log(`email sent `)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
-    const getTextId = () => {
-        return _textID
-    }
+    // const getTextId = () => {
+    //     return _textID
+    // }
 
-    const getEmailId = () => {
-        return _emailID
-    }
+    // const getEmailId = () => {
+    //     return _emailID
+    // }
 
     return {
         sendVerificationText: sendVerificationText,
         sendVerificationEmail: sendVerificationEmail,
         checkTextVerification: checkTextVerification,
-        getTextId: getTextId,
-        getEmailId: getEmailId
+        checkEmailVerification: checkEmailVerification,
+        // getTextId: getTextId,
+        // getEmailId: getEmailId
     }
 
 })();

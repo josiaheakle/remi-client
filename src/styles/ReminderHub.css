@@ -64,6 +64,10 @@ textarea {
     justify-content: center; */
 }
 
+.space-between {
+    justify-content: space-around;
+}
+
 /*
 .login-input {
     border: none;
@@ -99,7 +103,7 @@ textarea {
     text-align: center;
     border-radius: 1rem;
     margin-bottom: 8px;
-    height: 1.5rem;
+    min-height: 1.5rem;
     box-shadow: 2px 2px 1px var(--dark-brown);
 
 }
@@ -128,8 +132,9 @@ textarea {
 }
 
 .new-reminder-input.button {
-    width: 80px;
-    height: 1.5rem;
+    min-width: 80px;
+    width: fit-content;
+    min-height: 1.5rem;
     text-align: center;
     text-align-last: center;
 }
@@ -224,7 +229,7 @@ textarea {
     height: auto;
 }
 
-.verify-delete-modal-background {
+.verify-modal-background {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -243,24 +248,18 @@ textarea {
     backdrop-filter: grayscale(1);
 }
 
-.verify-delete-modal {
+.verify-modal {
 
     box-shadow: 2px 2px 1px var(--dark-brown);
 
     width: 450px;
-    height: 300px;
+    min-height: 300px;
 
     padding: 2em;
 
     background-color: var(--orange);
     border-radius: 20px;
 
-    /* position: fixed;
-    top: 50%;
-    left: 50%; */
-
-    /* margin-top: -225px;
-    margin-left: -150px; */
 
 }
 
@@ -290,7 +289,7 @@ textarea {
     padding-right: 1rem;
     border: none;
     outline: none;
-    height: 1.5rem;
+    min-height: 1.5rem;
     box-shadow: 2px 2px 1px var(--dark-brown);
 
 }
@@ -312,3 +311,12 @@ textarea {
 
 }
 
+#change-password-button {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+
+.login-button {
+    margin-top: 1em;
+}

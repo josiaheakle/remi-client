@@ -8,10 +8,15 @@
     background-color: var(--orange);
     box-shadow: 2px 2px 1px var(--dark-brown);
 
+    min-width: 300px;
+    max-width: 300px;
+
     display: flex;
     flex-direction: column;
 
     align-items: center;
+
+    font-size: 1.1em;
 
     /* justify-content: center; */
 
@@ -39,6 +44,21 @@
 .account-icon-container{ 
     width: 0;
     height: 0;
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.change-pass-button {
+    align-self: center;
+    margin-top: .5em;
+    width: fit-content;
+}
+
+.change-pass-header {
+    padding-bottom: 1em;
+    /* margin-bottom: 1em; */
 }
 
 .account-hub-header {
@@ -52,4 +72,100 @@
 .verified-icon {
     width: 1em;
     height: 1em;
+}
+
+.account-button {
+    margin-top: 1em;
+}
+
+.account-alert-message {
+    text-align: center;
+    max-width: 280px;
+    margin-bottom: .5em;
+}
+
+.account-verify-button {
+        background-color: var(--silver-pink);
+        color: var(--nav-text-color);
+        border-radius: 1rem;
+        /* padding: .25rem; */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: none;
+        outline: none;
+        height: 1.5rem;
+        box-shadow: 2px 2px 1px var(--dark-brown);
+
+}
+
+.account-verify-button:hover, .account-verify-button:focus  {
+    box-shadow: 4px 4px 1px var(--dark-brown);
+
+}
+
+.VerificationHub {
+    margin-bottom: .5em;
+}
+
+.verify-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+}
+
+.verification-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.verification-header {
+    color: var(--white);
+    text-shadow: 2px 2px var(--dark-brown);
+    font-size: 2em;
+    
+}
+
+.verification-input {
+    border: none;
+    outline: none;
+    width: 200px;
+    background-color: var(--silver-pink) !important;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 8px;
+    height: 1.5rem;
+    box-shadow: 2px 2px 1px var(--dark-brown);
+
+}
+.verification-input:hover, .verification-input:focus {
+    box-shadow: 3px 3px 1px var(--dark-brown);
+}
+
+
+.verification-button {
+    background-color: var(--silver-pink);
+    color: var(--nav-text-color);
+    border-radius: 1rem;
+    /* padding: .25rem; */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    outline: none;
+    height: 1.5rem;
+    box-shadow: 2px 2px 1px var(--dark-brown);
+}
+
+.verification-button:hover, .verification-button:focus  {
+    box-shadow: 3px 3px 1px var(--dark-brown);
+
+}
+
+
+#delete-account-button {
+    height: fit-content;
+    width: 100px;
+    color: var(--warning);
+
 }

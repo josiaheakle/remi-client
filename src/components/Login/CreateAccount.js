@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { toast } from "react-toastify"
 import LoginHandler from "../../modules/LoginHandler.js"
 import TimeZoneHandler from "../../modules/TimeZoneHandler.js"
 
@@ -66,36 +67,32 @@ const CreateAccount = (props) => {
         e.preventDefault();
 
         if(password !== passVerify) {
-            setAlert('Passwords do not match, please try again.')
+            toast('Passwords do not match, please try again.')
         } else if (password.length<8) {
-            setAlert('Password must be at least 8 characters.')
+            toast('Password must be at least 8 characters.')
         } else if (!passRequirements(password)) {
-            setAlert('Password must have at least one uppercase, one lowercase, and one number.')
+            toast('Password must have at least one uppercase, one lowercase, and one number.')
         }else {
             const res = await LoginHandler.createUser(email, phoneNum, username, password, time_zone)
-            if(res.type !== 'VALID') {
-                setAlert(res.message)
-            } else {
-                setAlert('')  
-            }
+            toast(res)
         }
     }
 
-    const setAlert = (str) => {
-        setAlertMessage(str);
-        const container = document.querySelector('.entry-container-grid')        
-        if(container) container.classList.add('alert-message-on')
-        setAlertMessage(str);
-        const alertMessageDom = document.querySelector('.alert-message')
-        if(alertMessageDom) {
-            alertMessageDom.classList.add('mounting')
-            setTimeout(() => {
-                alertMessageDom.classList.remove('mounting')
-            }, 2000)
-        }
-    }
+    // const setAlert = (str) => {
+    //     setAlertMessage(str);
+    //     const container = document.querySelector('.entry-container-grid')        
+    //     if(container) container.classList.add('alert-message-on')
+    //     setAlertMessage(str);
+    //     const alertMessageDom = document.querySelector('.alert-message')
+    //     if(alertMessageDom) {
+    //         alertMessageDom.classList.add('mounting')
+    //         setTimeout(() => {
+    //             alertMessageDom.classList.remove('mounting')
+    //         }, 2000)
+    //     }
+    // }
 
-        const importTimeZones = async () => {
+    const importTimeZones = async () => {
         const timeZoneSelector = document.getElementById('time-zone-input')
         let timezones = await TimeZoneHandler.getTimeZones()
         timezones.forEach(tz => {
@@ -104,7 +101,6 @@ const CreateAccount = (props) => {
             op.textContent = tz
             timeZoneSelector.appendChild(op)
         })
-
     }
 
     useEffect(() => {
@@ -129,7 +125,7 @@ const CreateAccount = (props) => {
                 <input className='login-input' onChange={updateValue} id='password-input' name='Password' type='password' autoComplete='password' required={true}></input>
                 <label htmlFor='password-verify-input'>Verify Password </label>
                 <input className='login-input' onChange={updateValue} id='password-verify-input' name='Password Verification' type='password' autoComplete='off' required={true}></input>
-                <button type='submit'>Submit</button>
+                <button className='login-button' type='submit'>Submit</button>
             </form>
         </div>
     );

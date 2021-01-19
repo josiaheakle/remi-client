@@ -1,18 +1,22 @@
-
-import { useEffect, useState } from "react"
+// react 
+import { Component, useEffect, useState } from "react"
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
 
+// components
 import EntryPage from "./Login/EntryPage.js"
 import HomePage from "./HomePage.js"
-import ReminderHub from "./Reminders/ReminderHub.js"
 
+// media
 import bgImg from "../media/coffee-and-map.jpg"
 
+// modules
 import LoginHandler from "../modules/LoginHandler.js"
-
-
-import '../styles/App.css';
 import ReminderHandler from "../modules/ReminderHandler.js"
+
+// css
+import 'react-toastify/dist/ReactToastify.css';
+import "../styles/style.css"
 
 const App = () => {
 
@@ -21,6 +25,8 @@ const App = () => {
   const [ reminders, setReminders ] = useState(undefined)
 
   const updateUser = (newUser) => {
+    console.log(`updated user `)
+    console.log(newUser)
     setUser(newUser)
   }
 
@@ -44,7 +50,10 @@ const App = () => {
   LoginHandler.setUserUpdateCallback(updateUser)
   ReminderHandler.setUpdateReminderCallback(getAllUserReminders)
 
+
   useEffect(() => {
+    console.log(`user updated at app`)
+    console.log(user)
     updateLoggedInStatus();
   }, [user])
 
@@ -58,6 +67,7 @@ const App = () => {
 
   return (
     <div className='App' style={{ backgroundImage: `url(${bgImg})` }}>
+    <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <Router>
         {(isUserLoggedIn===false) ? <Redirect to='/login' /> : null}
           <Switch>

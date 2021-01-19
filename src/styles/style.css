@@ -1,0 +1,48 @@
+input,
+button,
+select {
+    border: none;
+    outline: none;
+    /* width: 280px; */
+    background-color: var(--silver-pink);
+    text-align: center;
+    border-radius: 1rem;
+    /* margin-bottom: 8px; */
+    min-height: 1.5rem;
+    box-shadow: 2px 2px 1px var(--dark-brown);
+}
+
+input:hover,
+input:focus,
+button:hover,
+button:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus {
+    filter: brightness(.8);
+    box-shadow: 4px 4px 1px var(--dark-brown);
+}
+
+.icon-button {
+    box-shadow: none !important;
+}
+
+.Page {
+    width: 100vw;
+    height: 100vh;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+}
+
+.center-main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--nav-text-color);
+
+}

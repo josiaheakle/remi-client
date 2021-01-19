@@ -104,6 +104,11 @@ const HomePage = (props) => {
     }, [selectedPage])
 
     useEffect(() => {
+        console.log(`user changed at homepage`)
+        console.log(props.user)
+    }, [props.user])
+
+    useEffect(() => {
         updateIntroText();
         return () => {
             setStopAnimation(true)
@@ -125,7 +130,7 @@ const HomePage = (props) => {
                     {introText}
                 </div>
 
-                {(isUserVerified === false) ? <VerificationHub user={props.user} /> : null}
+                {/* {(isUserVerified === false) ? <VerificationHub user={props.user} /> : null} */}
 
 
                 <div className='page-selector'>

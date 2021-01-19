@@ -33,7 +33,7 @@ const NewAccountForm = ( props ) => {
                 <input onChange={updateValue} id='email-input' name='Email' type='email'></input>
                 <label htmlFor='password-input'>Password</label>
                 <input onChange={updateValue} id='password-input' name='Password' type='password'></input>
-                <button type='submit' >submit</button>
+                <button className='login-button' type='submit' >submit</button>
             </form>
         </div>
     );
