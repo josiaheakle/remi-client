@@ -25,8 +25,6 @@ const App = () => {
   const [ reminders, setReminders ] = useState(undefined)
 
   const updateUser = (newUser) => {
-    console.log(`updated user `)
-    console.log(newUser)
     setUser(newUser)
   }
 
@@ -41,9 +39,6 @@ const App = () => {
   const getAllUserReminders = async () => {
     const rems = await ReminderHandler.getAllReminders()
 
-    console.log(`reminders:`)
-    console.log(rems)
-
     setReminders(rems)
   }
 
@@ -52,8 +47,6 @@ const App = () => {
 
 
   useEffect(() => {
-    console.log(`user updated at app`)
-    console.log(user)
     updateLoggedInStatus();
   }, [user])
 

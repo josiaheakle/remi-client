@@ -15,7 +15,7 @@ const EntryPage = (  ) => {
     const [introText, setIntroText] = useState('');
     const [stopAnimation, setStopAnimation] = useState(false)
 
-    let fullIntroText = 'Hello, my name is Remi. I can help you schedule text remiders and create checklists. Login or create an account and we can get started!';
+    let fullIntroText = 'Hello, my name is Remi. I can help you schedule text and email remiders. Login or create an account and we can get started!';
     let introTextPlaceholder = '';
     let i = 0;
     const animateNextLetter = (pauseBool) => {

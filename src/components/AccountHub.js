@@ -40,12 +40,7 @@ const AccountHub = (props) => {
     const submitUpdate = async (e) => { 
 
         e.preventDefault()
-
-        console.log(`submit update`)
-
         let res = await LoginHandler.updateUserInfo(updateObject.field, updateObject.value);
-
-        console.log(res)
         toast(res)
         cancelEdit()
     }
@@ -142,13 +137,8 @@ const AccountHub = (props) => {
         setPassModalOpen(false)
     }
 
-    useEffect(() => {
-        console.log(`updateObject:`, updateObject)
-    }, [updateObject])
 
     useEffect(() => {
-
-        console.log('editValue:', editValue)
 
         switch(editValue) {
             case('name'):

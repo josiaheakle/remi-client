@@ -26,8 +26,8 @@ const NewReminderForm = (props) => {
     const [ title, setTitle ] = useState(undefined)
     const [ start_date, setStartDate ] = useState(undefined)
     const [ frequency, setFrequency ] = useState('Once')
-    const [ reminderType, setReminderType ] = useState('text')
-    const [ text, setTextString ] = useState(undefined)
+    const [ reminderType, setReminderType ] = useState('Text')
+    const [ text, setTextString ] = useState('')
 
     const updateValue = (e) => {
         switch(e.target.id) {
@@ -60,7 +60,6 @@ const NewReminderForm = (props) => {
                 text: text,
                 type: reminderType
             })
-            console.log(res)
         } else {
             props.submitted()
 
@@ -74,7 +73,6 @@ const NewReminderForm = (props) => {
 
             const res = await ReminderHandler.editReminder(props.reminder._id, newRem)
             setEditingReminder(false)
-            console.log(res)
             ReminderHandler.updateReminders()
         }
     }
@@ -160,8 +158,8 @@ const NewReminderForm = (props) => {
                 <input className='new-reminder-input' onChange={updateValue} id='title-input' name='Title' type='text' required={true}>
                 </input>
                 <label className='new-reminder-label' htmlFor='text-string-input'>Reminder</label>
-                <textarea className='new-reminder-input large' onChange={updateValue} id='text-string-input' name='Description' type='text' required={false}>
-                </textarea>
+                <input type='text' className='new-reminder-input large' onChange={updateValue} id='text-string-input' name='Description' type='text' required={false}>
+                </input>
                 <label className='new-reminder-label' htmlFor='start-date-input'>Date</label>
                 <input className='new-reminder-input' onChange={updateValue} id='start-date-input' name='Start Date' type='datetime-local' required={true}>
                 </input>

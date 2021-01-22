@@ -24,8 +24,6 @@ const LoginHandler = (() => {
         }
 
         const res = await axios(options)
-        console.log(res)
-
         if(res.data.user) {
             _currentUser = res.data.user
             _onUserUpdate()
@@ -63,7 +61,6 @@ const LoginHandler = (() => {
 
     const updateUserInfo = async (field, value) => {
 
-        console.log(`update user info (${field}, ${value})`)
 
         const options = {
             url: `${apiUrl}/user/update`,
@@ -82,7 +79,6 @@ const LoginHandler = (() => {
         try {
 
             const res = await axios(options) 
-            console.log(res)
             if(res.data.type === 'SUCCESS') {
                 if(field === 'email') {
                     _currentUser.email_verified = false
@@ -138,8 +134,6 @@ const LoginHandler = (() => {
 
         const res = await axios(options)
 
-        console.log(`updateuserverification - loginhandler, res: `,res)
-
         if(res.status === 200) {
             _currentUser.email_verified = res.data.email_verified
             _currentUser.phone_number_verified = res.data.phone_number_verified
@@ -168,8 +162,6 @@ const LoginHandler = (() => {
         }
 
         const res = await axios(options)
-        console.log('Delete user responce: ')
-        console.log(res)
 
         if(res.data.success === true) {
             _currentUser = undefined;

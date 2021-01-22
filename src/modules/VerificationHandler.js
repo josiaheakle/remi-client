@@ -61,9 +61,6 @@ const VerificationHandler = (() => {
     const sendVerificationText = async (phoneNum) => {
         // Calls backend text verification
         // rsets _textID as verification id
-
-        console.log(`Sending verification text`)
-
         const options = {
             url: `${process.env.REACT_APP_API_URL}/verify/number/${phoneNum}`,
             method: 'GET',
@@ -79,7 +76,6 @@ const VerificationHandler = (() => {
             if(res.status !== 200) throw 'Error validating phone number'
             else _textID = res.data
         } catch (err) {
-            console.log(err)
         }
 
     }
@@ -97,7 +93,6 @@ const VerificationHandler = (() => {
             const res = await axios(options)
             if(res.status !== 200) throw 'Error validating phone number'
             // else _textID = res.data
-            else console.log(`email sent `)
         } catch (err) {
             console.log(err)
         }

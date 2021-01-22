@@ -58,8 +58,6 @@ const HomePage = (props) => {
 
     const changePage = (e) => {
 
-        console.log(`Changing Page: `, e.target)
-
         switch(e.target.id) {
             case('page-selection-reminders'):
                 setSelectedPage('reminders')
@@ -102,10 +100,6 @@ const HomePage = (props) => {
 
     }, [selectedPage])
 
-    useEffect(() => {
-        console.log(`user changed at homepage`)
-        console.log(props.user)
-    }, [props.user])
 
     useEffect(() => {
         updateIntroText();

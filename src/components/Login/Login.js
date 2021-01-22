@@ -27,8 +27,6 @@ const Login = (props) => {
     const onLogin = async (e) => {
         e.preventDefault();
         const res = await LoginHandler.loginUser(email, password)
-        console.log(`responce from login handler`)
-        console.log(res)
         toast(res)
     }
 

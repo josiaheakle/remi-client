@@ -13,6 +13,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: var(--dark-brown);
+  overflow: hidden;
 }
 
 :root {

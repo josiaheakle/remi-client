@@ -33,8 +33,6 @@ const VerificationHub = (props) => {
             case ('text-verification-form'):
                 let t_res = await VerificationHandler.checkTextVerification(verificationCode)
 
-                console.log(t_res.message)
-
                 // toast(t_res.message)
                 setVerifyingText(false)
                 if (t_res.type === "SUCCESS") {
@@ -43,8 +41,6 @@ const VerificationHub = (props) => {
                 break;
             case ('email-verification-form'):
                 let e_res = await VerificationHandler.checkEmailVerification(verificationCode)
-
-                console.log(e_res.message)
 
                 setVerifyingEmail(false)
                 if(e_res.type === 'SUCCESS') {
@@ -63,8 +59,6 @@ const VerificationHub = (props) => {
     }
 
     useEffect(() => {
-        console.log(`USER UPDATED AT VERIFICATION HUB`)
-        console.log(props.user)
 
         setPhoneVerified(!!props.user.phone_number_verified)
         setEmailVerified(!!props.user.email_verified)

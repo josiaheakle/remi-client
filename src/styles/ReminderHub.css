@@ -229,7 +229,7 @@ textarea {
 
 .verify-modal-background {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -257,7 +257,6 @@ textarea {
 
     background-color: var(--orange);
     border-radius: 20px;
-
 
 }
 
@@ -320,6 +319,7 @@ textarea {
 }
 
 @media only screen and (max-width: 860px) {
+
     .ReminderHub {
         flex-direction: column;
     }
@@ -333,11 +333,26 @@ textarea {
         border-bottom: 1px solid black;
     }
 
+    .verify-modal {
+
+        max-width: 90vw;
+        width: 300px;
+        min-height: 300px;
     
+        padding: 1em;
+
+    
+    }
+
 }
 
 @media only screen and (min-width: 861px) {
 
+    .verify-modal {
+        width: 450px;
+        min-height: 300px;
+    
+    }
 
     .NewReminderForm {
         width: 50%;
